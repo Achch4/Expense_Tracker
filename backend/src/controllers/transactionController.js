@@ -1,76 +1,70 @@
-// src/controllers/resourceController.js
-import { transactions } from "../models/transactions.js";
-
-// GET all
-export const getAll = async (req, res) => {
+import { Transaction } from "../models/transactions.js";
+//add expenses
+export const addTransaction = async (req, res) => {
   try {
-    const items = await Resource.find().sort({ createdAt: -1 });
-    res.status(200).json(items);
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-// GET one by id
-export const getOne = async (req, res) => {
-  try {
-    const item = await Resource.findById(req.params.id);
-    if (!item) {
-      return res.status(404).json({ message: "Not found" });
-    }
-    res.status(200).json(item);
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-// POST create new
-export const create = async (req, res) => {
-  try {
-    const { field1, field2, field3 } = req.body;
+    const { type, amount, category, description, date } = req.body;
 
     // Validation
-    if (!field1 || !field2) {
+    if (!type || !amount || !category || !date) {
       return res.status(400).json({ message: "Required fields missing" });
     }
 
-    const item = new Resource({ field1, field2, field3 });
-    await item.save();
-    res.status(201).json(item);
+    const transactions = new Transaction({
+      type,
+      amount,
+      category,
+      description,
+      date,
+    });
+    await transactions.save();
+    res.status(201).json(transactions);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-// PUT update
-export const update = async (req, res) => {
+// GET All Transactions
+export const getAllTransactions = async (req, res) => {
   try {
-    const item = await Resource.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true } // returns updated document
-    );
-
-    if (!item) {
-      return res.status(404).json({ message: "Not found" });
-    }
-
-    res.status(200).json(item);
+    const transactions = await Transaction.find().sort({ createdAt: -1 });
+    res.status(200).json(transactions);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-// DELETE
-export const remove = async (req, res) => {
+// Delete A Transaction
+export const removeTransaction = async (req, res) => {
   try {
-    const item = await Resource.findByIdAndDelete(req.params.id);
+    const transactions = await Transaction.findByIdAndDelete(req.params.id);
 
-    if (!item) {
+    if (!transactions) {
       return res.status(404).json({ message: "Not found" });
     }
 
     res.status(200).json({ message: "Deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+// Get Summary
+
+export const getTotal = async (req, res) => {
+  try {
+    const transactions = await Transaction.find();
+
+    const totalIncome = transactions
+      .filter((t) => t.type === "income")
+      .reduce((sum, t) => sum + t.amount, 0);
+
+    const totalExpenses = transactions
+      .filter((t) => t.type === "expense")
+      .reduce((sum, t) => sum + t.amount, 0);
+
+    const balance = totalIncome - totalExpenses;
+
+    res.status(200).json({ totalIncome, totalExpenses, balance });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
