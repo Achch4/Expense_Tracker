@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors";
 import connectDB from "./src/config/db.js";
 import transactionRoutes from "./src/routes/transactionRoutes.js";
+import cors from "cors";
+
 
 dotenv.config();
 
@@ -27,3 +28,7 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
