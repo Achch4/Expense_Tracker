@@ -10,6 +10,8 @@ const Transactions = () => {
   const [error, setError] = useState(null);
 
    const handleDelete = async (id) => {
+    const confirmed = window.confirm("are you sure you want to delete");
+    if(!confirmed) return;
     await deleteTransaction(id);
     fetchData(); // refetch without refreshing the page
   };
@@ -32,16 +34,41 @@ const Transactions = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+  if(transactions.length<1) return <p>No Transactions</p>;
 
   return (
-    <div>
-      <h1>Transactions</h1>
-      {transactions.map((t) => (
-        <p key={t._id}>{t.amount} - {t.category} - <button onClick={()=>handleDelete(t._id)}>delete</button></p>
-      ))}
-      
-    </div>
-  );
+  <div>
+    <h1>Transactions</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((t) => (
+          <tr key={t._id}>
+            <td>{t.type}</td>
+            <td>{t.date}</td>
+            <td>{t.category}</td>
+            <td>{t.amount}</td>
+            <td>
+              <button onClick={() => handleDelete(t._id)}>Delete</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 };
 
 export default Transactions;
+
+
+
+

@@ -20,8 +20,8 @@ const Add = () => {
     e.preventDefault(); // stops page from refreshing
     //frontend validation
     if (!type) return alert("please select type");
-    if (!amount || amount < 0) return alert("please add a valid amount");
     if (!category) return alert("please select a category");
+    if (!amount || amount < 0) return alert("please add a valid amount");
     if (!date) return alert("please select a date");
     await addTransaction({ type, amount, category, description, date });
     resetForm();
