@@ -31,6 +31,7 @@ const Transactions = () => {
       setLoading(false);
     }
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -53,7 +54,7 @@ const Transactions = () => {
         {transactions.map((t) => (
           <tr key={t._id}>
             <td>{t.type}</td>
-            <td>{t.date}</td>
+            <td>{new Date(t.date).toLocaleDateString('en-GB')}</td>
             <td>{t.category}</td>
             <td>{t.amount}</td>
             <td>
