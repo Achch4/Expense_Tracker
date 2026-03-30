@@ -16,81 +16,133 @@ const Add = () => {
     setDate("");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // stops page from refreshing
-    //frontend validation
-    if (!type) return alert("please select type");
-    if (!category) return alert("please select a category");
-    if (!amount || amount < 0) return alert("please add a valid amount");
-    if (!date) return alert("please select a date");
-    await addTransaction({ type, amount, category, description, date });
-    resetForm();
-    alert("succesfully added");
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+    setCategory("");
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!type) return alert("Please select a type");
+    if (!category) return alert("Please select a category");
+    if (!amount || amount < 0) return alert("Please add a valid amount");
+    if (!date) return alert("Please select a date");
+    await addTransaction({ type, amount, category, description, date });
+    resetForm();
+    alert("Successfully added!");
+  };
+
+  const inputClass =
+    "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-700 focus:outline-none focus:border-stone-400 transition";
+
+  const labelClass = "block text-xs text-stone-400 uppercase tracking-widest mb-2";
+
   return (
-    <div>
-      <h1>Add Transaction</h1>
-      <form>
-        {/* 1. Type dropdown - updates type state when changed */}
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="">Select type</option>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
+    <div className="min-h-screen bg-stone-50">
+      {/* Header */}
+      <div className="border-b border-stone-200 px-8 py-5">
+        <h1 className="text-2xl font-bold text-stone-800 tracking-tight">Add Transaction</h1>
+        <p className="text-stone-400 text-sm mt-0.5">Record a new income or expense</p>
+      </div>
 
-        {/* 2. Category - shows different options based on type */}
-        {type === "expense" ? (
-          <select
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">Select Category</option>
-            <option value="Food">Food</option>
-            <option value="Transport">Transport</option>
-            <option value="Bills">Bills</option>
-            <option value="Other">Other</option>
-          </select>
-        ) : (
-          <select
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">Select Category</option>
-            <option value="Salary">Salary</option>
-            <option value="Freelance">Freelance</option>
-            <option value="Other">Other</option>
-          </select>
-        )}
+      <div className="max-w-lg mx-auto px-8 py-10">
+        <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-8">
+          <form className="space-y-6">
 
-        {/* 3. Rest of inputs */}
-        <input
-          type="number"
-          name="amount"
-          value={amount}
-          placeholder="Amount"
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <input
-          type="text"
-          name="description"
-          value={description}
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="date"
-          name="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
+            {/* Type */}
+            <div>
+              <label className={labelClass}>Type</label>
+              <select value={type} onChange={handleTypeChange} className={inputClass}>
+                <option value="">Select type</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
 
-        <button type="button" onClick={handleSubmit}>
-          Add Transaction
-        </button>
-      </form>
+            {/* Category */}
+            <div>
+              <label className={labelClass}>Category</label>
+              {type === "expense" ? (
+                <select
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="">Select category</option>
+                  <option value="Food">Food</option>
+                  <option value="Transport">Transport</option>
+                  <option value="Bills">Bills</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Health">Health</option>
+                  <option value="Other">Other</option>
+                </select>
+              ) : (
+                <select
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="">Select category</option>
+                  <option value="Salary">Salary</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Business">Business</option>
+                  <option value="Other">Other</option>
+                </select>
+              )}
+            </div>
+
+            {/* Amount */}
+            <div>
+              <label className={labelClass}>Amount (Rs.)</label>
+              <input
+                type="number"
+                name="amount"
+                value={amount}
+                placeholder="0.00"
+                onChange={(e) => setAmount(e.target.value)}
+                className={inputClass}
+              />
+            </div>
+
+            {/* Description */}
+            <div>
+              <label className={labelClass}>Description <span className="normal-case text-stone-300">(optional)</span></label>
+              <input
+                type="text"
+                name="description"
+                value={description}
+                placeholder="What was this for?"
+                onChange={(e) => setDescription(e.target.value)}
+                className={inputClass}
+              />
+            </div>
+
+            {/* Date */}
+            <div>
+              <label className={labelClass}>Date</label>
+              <input
+                type="date"
+                name="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className={inputClass}
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="w-full bg-stone-900 text-white text-sm tracking-widest uppercase py-3.5 rounded-xl hover:bg-stone-700 transition duration-200 mt-2"
+            >
+              Add Transaction →
+            </button>
+
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

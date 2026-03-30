@@ -4,7 +4,6 @@ import { getTransactions } from "../services/transactionService";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
@@ -93,32 +92,32 @@ const Dashboard = () => {
         {/* Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Income */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
-            <p className="text-xs text-stone-400 uppercase tracking-widest mb-3">
+          <div className="bg-green-200 rounded-2xl p-6 border border-stone-300 shadow-sm">
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">
               Total Income
             </p>
-            <p className="text-3xl font-bold text-emerald-500">
+            <p className="text-3xl font-bold text-stone-900">
               Rs. {summary.totalIncome.toLocaleString()}
             </p>
           </div>
 
           {/* Expenses */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
-            <p className="text-xs text-stone-400 uppercase tracking-widest mb-3">
+          <div className="bg-rose-300 rounded-2xl p-6 border border-stone-300 shadow-sm">
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">
               Total Expenses
             </p>
-            <p className="text-3xl font-bold text-rose-500">
+            <p className="text-3xl font-bold text-stone-900">
               Rs. {summary.totalExpenses.toLocaleString()}
             </p>
           </div>
 
           {/* Balance */}
-          <div className="bg-stone-900 rounded-2xl p-6 shadow-sm">
-            <p className="text-xs text-stone-400 uppercase tracking-widest mb-3">
+          <div className="bg-violet-200 rounded-2xl p-6 border border-stone-300 shadow-sm">
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">
               Balance
             </p>
             <p
-              className={`text-3xl font-bold ${summary.balance >= 0 ? "text-emerald-400" : "text-rose-400"}`}
+              className={`text-3xl font-bold ${summary.balance >= 0 ? "text-stone-900" : "text-rose-400"}`}
             >
               Rs. {summary.balance.toLocaleString()}
             </p>
@@ -128,9 +127,9 @@ const Dashboard = () => {
         {/* Chart + Recent Transactions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Pie Chart */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
-            <p className="text-xs text-stone-400 uppercase tracking-widest mb-6">
-              Expenses by Category
+          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm">
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">
+              Top Spend Areas
             </p>
             {Object.keys(expensesByCategory).length > 0 ? (
               <div className="flex justify-center">
@@ -149,8 +148,8 @@ const Dashboard = () => {
           </div>
 
           {/* Recent Transactions */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
-            <p className="text-xs text-stone-400 uppercase tracking-widest mb-6">
+          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm">
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">
               Recent Transactions
             </p>
             {recentTransactions.length > 0 ? (
@@ -158,7 +157,7 @@ const Dashboard = () => {
                 {recentTransactions.map((t) => (
                   <div
                     key={t._id}
-                    className="flex items-center justify-between py-2 border-b border-stone-50 last:border-0"
+                    className="flex items-center justify-between py-2 border-b border-stone-300 last:border-0"
                   >
                     <div>
                       <p className="text-sm font-medium text-stone-700">
