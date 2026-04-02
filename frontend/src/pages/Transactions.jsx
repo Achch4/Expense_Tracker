@@ -28,6 +28,8 @@ const Transactions = () => {
     }
   };
 
+  const labelClass = "text-left text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4";
+
   if (loading) return (
     <div className="min-h-screen bg-stone-50 flex items-center justify-center">
       <p className="text-stone-400 text-sm tracking-widest uppercase">Loading...</p>
@@ -49,21 +51,27 @@ const Transactions = () => {
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Header */}
-      <div className="border-b border-stone-200 px-8 py-5">
-        <h1 className="text-2xl font-bold text-stone-800 tracking-tight">Transactions</h1>
-        <p className="text-stone-400 text-sm mt-0.5">{transactions.length} total transactions</p>
-      </div>
+      <div className="border-b border-stone-200">
+  <div className="max-w-5xl mx-auto px-8 py-5">
+    <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
+      Transactions
+    </h1>
+    <p className="text-stone-400 text-sm mt-0.5">
+      {transactions.length} total transactions
+    </p>
+  </div>
+</div>
 
       <div className="max-w-5xl mx-auto px-8 py-8">
         <div className="bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="border-b border-stone-100">
-                <th className="text-left text-xs text-stone-400 uppercase tracking-widest px-6 py-4">Type</th>
-                <th className="text-left text-xs text-stone-400 uppercase tracking-widest px-6 py-4">Category</th>
-                <th className="text-left text-xs text-stone-400 uppercase tracking-widest px-6 py-4">Date</th>
-                <th className="text-left text-xs text-stone-400 uppercase tracking-widest px-6 py-4">Description</th>
-                <th className="text-right text-xs text-stone-400 uppercase tracking-widest px-6 py-4">Amount</th>
+                <th className={labelClass}>Type</th>
+                <th className={labelClass}>Category</th>
+                <th className={labelClass}>Date</th>
+                <th className={labelClass}>Description</th>
+                <th className="text-right text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4">Amount</th>
                 <th className="px-6 py-4"></th>
               </tr>
             </thead>

@@ -81,11 +81,15 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Header */}
-      <div className="border-b border-stone-200 px-8 py-5">
-        <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
-          Overview
-        </h1>
-        <p className="text-stone-400 text-sm mt-0.5">Your financial summary</p>
+      <div className="border-b border-stone-200">
+        <div className="max-w-5xl mx-auto px-8 py-5">
+          <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
+            Overview
+          </h1>
+          <p className="text-stone-400 text-sm mt-0.5">
+            Your financial summary
+          </p>
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto px-8 py-8 space-y-8">
