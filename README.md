@@ -6,7 +6,9 @@ A full-stack expense tracking application built with the MERN stack. Track your 
 🔗 [https://expense-tracker-mauve-phi-92.vercel.app/](https://expense-tracker-mauve-phi-92.vercel.app/)
 
 ## Screenshot
-![Dashboard](screenshot.png)
+![Dashboard]
+<img width="1048" height="681" alt="image" src="https://github.com/user-attachments/assets/70dae88d-2f39-4c77-b504-40e4367a2749" />
+
 
 ## Features
 - Add income and expense transactions with category, date and description
