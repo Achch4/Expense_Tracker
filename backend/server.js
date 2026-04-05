@@ -22,7 +22,7 @@ app.use("/api", transactionRoutes);
 
 // Health check
 app.get("/", (req, res) => {
-  res.send("Hello gal kolla");
+  res.send("Hello");
 });
 
 app.listen(PORT, () => {
