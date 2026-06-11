@@ -3,6 +3,7 @@ import { getSummary } from "../services/transactionService";
 import { getTransactions } from "../services/transactionService";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import FileUpload from "../components/FileUpload";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -187,6 +188,7 @@ const Dashboard = () => {
             )}
           </div>
         </div>
+        <FileUpload/>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import Transactions from "./pages/Transactions";
 
 const App = () => {
   return (
+    <div data-theme="acid">
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/transactions" element={<Transactions />} />
       </Routes>
     </BrowserRouter>
+    </div>
   );
 };
 
