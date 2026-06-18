@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { fileUpload } from '../services/transactionService';
 
 const FileUpload = () => {
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append('statement', file);
+
+    try {
+      const data = await fileUpload(formData);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
-    <input type="file" className="file-input" />
+      <input type="file" accept=".csv" className="file-input" onChange={handleFileChange} />
+      <button onClick={handleUpload}>Upload</button>
     </div>
-  )
-}
+  );
+};
 
-export default FileUpload
+export default FileUpload;
