@@ -1,4 +1,5 @@
 import { Transaction } from "../models/transactions.js";
+import { categorizeTransactions } from "../services/geminiService.js";
 //add expenses
 export const addTransaction = async (req, res) => {
   try {
@@ -69,3 +70,16 @@ export const getTotal = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+export const uploadStatement = async (req, res) => {
+  try {
+    const csvString = req.file.buffer.toString('utf-8');
+    const transactions = await categorizeTransactions(csvString);
+    await Transaction.insertMany(transactions);
+    res.json({message: 'Transaction imported', count: transactions.length});
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+
+
+}
