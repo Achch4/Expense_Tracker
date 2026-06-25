@@ -73,11 +73,16 @@ export const getTotal = async (req, res) => {
 
 export const uploadStatement = async (req, res) => {
   try {
+    console.log('1 - file received:', req.file?.originalname);
     const csvString = req.file.buffer.toString('utf-8');
+    console.log('2 - csv string length:', csvString.length);
     const transactions = await categorizeTransactions(csvString);
+    console.log('3 - transactions from gemini:', transactions);
     await Transaction.insertMany(transactions);
+    console.log('4 - inserted successfully');
     res.json({message: 'Transaction imported', count: transactions.length});
   } catch (error) {
+    console.error('ERROR:', error.message);
     res.status(500).json({message: error.message});
   }
 

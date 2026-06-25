@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
 export const categorizeTransactions = async (csvString) => {
   const prompt = `
@@ -10,7 +10,7 @@ export const categorizeTransactions = async (csvString) => {
 
     Return a JSON array where each transaction has exactly these fields:
     - type (string, either "income" or "expense")
-    - amount (number, positive for income negative for expense)
+    - amount (number)
     - category (string, if an expense on of - Food , Transport , Bills , Shopping , Health , Other : if an income on of - Salary , Freelance , Business , Other)
     - description (string, default = "")
     - date (Date, format YYYY-MM-DD)
