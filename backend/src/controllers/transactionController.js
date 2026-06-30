@@ -76,9 +76,9 @@ export const uploadStatement = async (req, res) => {
     console.log('1 - file received:', req.file?.originalname);
     const csvString = req.file.buffer.toString('utf-8');
     console.log('2 - csv string length:', csvString.length);
-    const transactions = await categorizeTransactions(csvString);
+    const transactions = await categorizeTransactions(csvString); // categorize from gemini API
     console.log('3 - transactions from gemini:', transactions);
-    await Transaction.insertMany(transactions);
+    await Transaction.insertMany(transactions); // insert categorized transactions to the db
     console.log('4 - inserted successfully');
     res.json({message: 'Transaction imported', count: transactions.length});
   } catch (error) {

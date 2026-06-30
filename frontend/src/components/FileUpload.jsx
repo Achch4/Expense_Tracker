@@ -5,7 +5,7 @@ const FileUpload = () => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setFile(e.target.files[0]);//set the first file outputs an array
   };
 
   const handleUpload = async () => {
