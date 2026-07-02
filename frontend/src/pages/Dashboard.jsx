@@ -41,6 +41,7 @@ const Dashboard = () => {
       return acc;
     }, {});
 
+
   const chartData = {
     labels: Object.keys(expensesByCategory),
     datasets: [
@@ -59,7 +60,7 @@ const Dashboard = () => {
     ],
   };
 
-  const recentTransactions = [...transactions]
+  const recentTransactions = [...transactions]// creates a copy of the transaction array with ... spread
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 5);
 
