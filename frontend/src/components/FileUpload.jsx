@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fileUpload } from '../services/transactionService';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);//set the first file outputs an array
@@ -13,8 +15,8 @@ const FileUpload = () => {
     formData.append('statement', file);
 
     try {
-      const data = await fileUpload(formData);
-      console.log(data);
+      await fileUpload(formData);
+      navigate('/transactions');
     } catch (error) {
       console.error(error);
     }

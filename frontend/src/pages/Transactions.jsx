@@ -10,19 +10,6 @@ const Transactions = () => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState(``);
 
-  const handleDelete = async (id) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this transaction?",
-    );
-    if (!confirmed) return;
-    await deleteTransaction(id);
-    fetchData();
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const data = await getTransactions();
@@ -33,6 +20,22 @@ const Transactions = () => {
       setLoading(false);
     }
   };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this transaction?",
+    );
+    if (!confirmed) return;
+    await deleteTransaction(id);
+    fetchData();
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    fetchData();
+  }, []);
+
+  
 
   const labelClass =
     "text-left text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4";

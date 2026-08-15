@@ -17,10 +17,6 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const data = await getSummary();
@@ -33,6 +29,13 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    fetchData();
+  }, []);
+
+  
 
   const expensesByCategory = transactions
     .filter((t) => t.type === "expense")
