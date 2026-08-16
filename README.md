@@ -16,10 +16,12 @@ A full-stack expense tracking application built with the MERN stack. Track your 
 - Pie chart showing expense breakdown by category
 - Full transaction history with delete functionality
 - Responsive UI built with Tailwind CSS
+- CSV bank statement upload with AI-powered categorization (Gemini API)
+- Search and filter transactions by category
 
 ## Tech Stack
 - **Frontend:** React (Vite), Tailwind CSS, Chart.js
-- **Backend:** Node.js, Express.js
+- **Backend:** Node.js, Express.js, Gemini API
 - **Database:** MongoDB, Mongoose
 - **Deployment:** Vercel (frontend) + Render (backend)
 
