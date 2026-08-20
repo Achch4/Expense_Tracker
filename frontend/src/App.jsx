@@ -3,10 +3,13 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Add from "./pages/Add";
 import Transactions from "./pages/Transactions";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
-const App = () => {
-  return (
-    <div data-theme="acid">
+
+const AppContent = () => {
+    const { theme } = useTheme();
+    return (
+    <div className={theme ? "dark" : ""}>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -16,6 +19,14 @@ const App = () => {
       </Routes>
     </BrowserRouter>
     </div>
+  );
+}
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 

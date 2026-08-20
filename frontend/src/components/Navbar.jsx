@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Sun, Moon } from "lucide-react";
-import { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const location = useLocation();
@@ -11,13 +11,13 @@ const Navbar = () => {
         ? "text-stone-900"
         : "text-stone-400 hover:text-stone-700"
     }`;
-  const [theme, setTheme] = useState('');
+  const {setTheme} = useTheme();
   return (
-    <nav className={`${theme ? "dark" : "" } bg-white dark:bg-zinc-800 border-b border-stone-200 px-8 py-4`}>
+    <nav className="bg-white dark:bg-zinc-800 border-b border-stone-200 px-8 py-4">
       <div className="max-w-5xl mx-auto flex items-center justify-between">
         <div className="flex items-center justify-between gap-3">
           {/* Logo / App Name */}
-          <h1 className="text-lg font-bold text-stone-800 tracking-tight">
+          <h1 className="text-lg font-bold text-stone-800 dark:text-slate-300 tracking-tight">
             Finance Tracker
           </h1>
           <div className="bg-zinc-100 dark:bg-zinc-700 p-2 rounded-xl">

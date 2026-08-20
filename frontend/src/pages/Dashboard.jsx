@@ -84,7 +84,7 @@ const Dashboard = () => {
     );
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 dark:bg-zinc-800">
       {/* Header */}
       <div className="border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-8 py-5">
@@ -99,7 +99,7 @@ const Dashboard = () => {
 
       <div className="max-w-5xl mx-auto px-8 py-8 space-y-8">
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 dark:bg-gray-700 p-5 rounded-xl">
           {/* Income */}
           <div className="bg-green-200 rounded-2xl p-6 border border-stone-300 shadow-sm">
             <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">
@@ -134,7 +134,7 @@ const Dashboard = () => {
         </div>
 
         {/* Chart + Recent Transactions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 dark:bg-gray-700 p-5 rounded-xl">
           {/* Pie Chart */}
           <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm">
             <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">
