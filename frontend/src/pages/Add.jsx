@@ -33,17 +33,17 @@ const Add = () => {
   };
 
   const inputClass =
-    "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-700 focus:outline-none focus:border-stone-400 transition";
+    "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-700 focus:outline-none focus:border-stone-400 transition dark:bg-zinc-800 dark:text-slate-300";
 
   const labelClass =
-    "block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2";
+    "block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 dark:text-slate-300";
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 dark:bg-zinc-800">
       {/* Header */}
       <div className="border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-8 py-5">
-          <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
+          <h1 className="text-2xl font-bold text-stone-800 tracking-tight dark:text-slate-300">
             Add Transaction
           </h1>
           <p className="text-stone-400 text-sm mt-0.5">
@@ -54,7 +54,7 @@ const Add = () => {
 
       <div className="max-w-5xl mx-auto px-8 py-10">
         <div className="max-w-lg">
-          <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-8">
+          <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-8 dark:bg-gray-700">
             <form className="space-y-6">
               {/* Type */}
               <div>

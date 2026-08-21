@@ -88,7 +88,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-8 py-5">
-          <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
+          <h1 className="text-2xl font-bold text-stone-800 tracking-tight dark:text-slate-300">
             Overview
           </h1>
           <p className="text-stone-400 text-sm mt-0.5">
@@ -136,7 +136,7 @@ const Dashboard = () => {
         {/* Chart + Recent Transactions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 dark:bg-gray-700 p-5 rounded-xl">
           {/* Pie Chart */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm dark:bg-gray-800">
             <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">
               Top Spend Areas
             </p>
@@ -157,7 +157,7 @@ const Dashboard = () => {
           </div>
 
           {/* Recent Transactions */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 border border-stone-300 shadow-sm dark:bg-gray-800">
             <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">
               Recent Transactions
             </p>
@@ -169,7 +169,7 @@ const Dashboard = () => {
                     className="flex items-center justify-between py-2 border-b border-stone-300 last:border-0"
                   >
                     <div>
-                      <p className="text-sm font-medium text-stone-700">
+                      <p className="text-sm font-medium text-stone-700 dark:text-slate-300">
                         {t.category}
                       </p>
                       <p className="text-xs text-stone-400">

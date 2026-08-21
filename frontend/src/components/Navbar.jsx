@@ -8,7 +8,7 @@ const Navbar = () => {
   const linkClass = (path) =>
     `text-sm font-medium transition ${
       location.pathname === path
-        ? "text-stone-900"
+        ? "text-stone-900 dark:text-slate-300"
         : "text-stone-400 hover:text-stone-700"
     }`;
   const {setTheme} = useTheme();

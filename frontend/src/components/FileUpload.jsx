@@ -23,7 +23,7 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
+    <div className='p-2 dark:bg-gray-700 rounded-xl inline-block'>
       <input type="file" accept=".csv" className="file-input" onChange={handleFileChange} />
       <button className="btn btn-neutral btn-outline" onClick={handleUpload}>Upload</button>
     </div>

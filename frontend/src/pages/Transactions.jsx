@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Search } from 'lucide-react';
 import {
   deleteTransaction,
   getTransactions,
@@ -38,7 +39,7 @@ const Transactions = () => {
   
 
   const labelClass =
-    "text-left text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4";
+    "text-left text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4 dark:text-slate-300";
 
   if (loading)
     return (
@@ -64,40 +65,25 @@ const Transactions = () => {
     );
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 dark:bg-zinc-800">
       {/* Header */}
       <div className="border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-8 py-5">
-          <h1 className="text-2xl font-bold text-stone-800 tracking-tight">
+          <h1 className="text-2xl font-bold text-stone-800 tracking-tight dark:text-slate-300">
             Transactions
           </h1>
           <p className="text-stone-400 text-sm mt-0.5">
             {transactions.length} total transactions
           </p>
-          <label className="input">
-            <svg
-              className="h-[1em] opacity-50"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2.5"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </g>
-            </svg>
-            <input type="search" required placeholder="Search" onChange={(e) => setSearch(e.target.value)}/>
+          <label className="flex m-1">
+            <Search />
+            <input className="ml-1 dark:bg-gray-700" type="search" required placeholder="Search" onChange={(e) => setSearch(e.target.value)}/>
           </label>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-8 py-8">
-        <div className="bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden">
+      <div className="max-w-5xl mx-auto px-8 py-8 dark:bg-gray-700 rounded-xl">
+        <div className="bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden dark:bg-gray-800">
           <table className="w-full">
             <thead>
               <tr className="border-b border-stone-100">
@@ -105,7 +91,7 @@ const Transactions = () => {
                 <th className={labelClass}>Category</th>
                 <th className={labelClass}>Date</th>
                 <th className={labelClass}>Description</th>
-                <th className="text-right text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4">
+                <th className="text-right text-xs font-bold text-zinc-500 uppercase tracking-widest px-6 py-4 dark:text-slate-300">
                   Amount
                 </th>
                 <th className="px-6 py-4"></th>
@@ -115,7 +101,7 @@ const Transactions = () => {
               {transactions.filter((t) => t.category.toLowerCase().includes(search.toLowerCase())).map((t) => (
                 <tr
                   key={t._id}
-                  className="border-b border-stone-50 hover:bg-stone-50 transition"
+                  className="border-b border-stone-50 hover:bg-stone-50 transition hover:dark:bg-slate-600"
                 >
                   {/* Type badge */}
                   <td className="px-6 py-4">
@@ -131,7 +117,7 @@ const Transactions = () => {
                   </td>
 
                   {/* Category */}
-                  <td className="px-6 py-4 text-sm text-stone-700">
+                  <td className="px-6 py-4 text-sm text-stone-700 dark:text-slate-300">
                     {t.category}
                   </td>
 
