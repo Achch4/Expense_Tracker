@@ -18,6 +18,7 @@ A full-stack expense tracking application built with the MERN stack. Track your 
 - Responsive UI built with Tailwind CSS
 - CSV bank statement upload with AI-powered categorization (Gemini API)
 - Search and filter transactions by category
+- Dark mode added
 
 ## Tech Stack
 - **Frontend:** React (Vite), Tailwind CSS, Chart.js
